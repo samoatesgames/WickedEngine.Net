@@ -10,6 +10,10 @@ namespace WickedEngine.Net.WPF.Sample
     /// </summary>
     public partial class MainWindow
     {
+        private Vector3 m_lookAt = Vector3.Zero;
+        private float m_cameraYOffset = 6.0f;
+        private float m_cameraDistance = 10.0f;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -23,6 +27,7 @@ namespace WickedEngine.Net.WPF.Sample
             var renderPath = engine.GetRenderPath();
             renderPath.SetHelperGridEnabled(true);
             renderPath.SetSSREnabled(true);
+            renderPath.SetTemporalAAEnabled(true);
 
             var weather = engine.GetWeather();
             weather.SetHorizon(new Vector3(0.38f, 0.38f, 0.38f));
@@ -35,20 +40,20 @@ namespace WickedEngine.Net.WPF.Sample
 
         private void SetupCameraOrbit(Camera camera)
         {
-            var tick = -90.0f;
+            var tick = -75.0f;
             void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
             {
                 tick += 0.0025f;
-                var x = MathF.Sin(tick) * 12.0f;
-                var z = MathF.Cos(tick) * -12.0f;
-                camera.SetPositionAndLookAt(new Vector3(x, 6, z), new Vector3(0, 4, 0));
+                var x = MathF.Sin(tick) * m_cameraDistance;
+                var z = MathF.Cos(tick) * -m_cameraDistance;
+                camera.SetPositionAndLookAt(new Vector3(x, m_cameraYOffset, z), m_lookAt);
 
                 var position = (Vector3)camera.GetPosition();
-                var lookAt = (Vector3)camera.GetForward();
+                var lookDir = (Vector3)camera.GetForward();
                 Application.Current?.Dispatcher?.InvokeAsync(() =>
                 {
                     InfoTextBlock.Text = $"Camera Position: {position.X:F2},  {position.Y:F2},  {position.Z:F2}\n" +
-                    $"Camera Forward: {lookAt.X:F2},  {lookAt.Y:F2},  {lookAt.Z:F2}";
+                    $"Camera Forward: {lookDir.X:F2},  {lookDir.Y:F2},  {lookDir.Z:F2}";
                 });
             }
 
@@ -60,17 +65,34 @@ namespace WickedEngine.Net.WPF.Sample
         private void RenderView_EngineInitialized(object sender, EventArgs e)
         {
             var engine = RenderView.WickedEngine;
+            LoadModel(engine);
+        }
 
-            Entity? entity = default;
-            if (!engine.TryLoadGLTF("Assets/DamagedHelmet.glb", ref entity))
+        private void LoadModel(WickedEngineNet.WickedEngineNet engine)
+        {
+            Entity? entity = null;
+            if (!engine.TryLoadGLTF("Assets/FlightHelmet.glb", ref entity))
             {
                 throw new Exception("Failed to load GLTF model");
             }
 
-            // TODO: use the bounds to calculate optimal scale and translation
+            const float targetScale = 8.0f;
+
+            var bounds = entity.GetBounds();
+            var y = ((Vector3)bounds.GetMin()).Y;
+            var scale = targetScale / bounds.GetRadius();
+
+            var yOffset = -y * scale;
+
             var transform = entity.GetTransform();
-            transform.SetTranslation(new Vector3(0, 4, 0));
-            transform.SetScale(new Vector3(4, 4, 4));
+            transform.SetTranslation(new Vector3(0, yOffset, 0));
+            transform.SetScale(new Vector3(scale, scale, scale));
+
+            m_lookAt = ((Vector3)bounds.GetCenter()) * scale;
+            m_lookAt.Y += yOffset;
+
+            m_cameraYOffset = m_lookAt.Y * 1.5f;
+            m_cameraDistance = (bounds.GetRadius() * 1.75f) * scale;
         }
     }
 }

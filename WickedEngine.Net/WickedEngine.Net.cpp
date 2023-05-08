@@ -88,7 +88,8 @@ bool WickedEngineNet::WickedEngineNet::TryLoadGLTF(String^ filePath, Entity^% ro
 	ImportModel_GLTF(msclr::interop::marshal_as<std::string>(filePath), scene);
 
 	// Grab the root entity
-	rootEntity = gcnew Entity(scene.transforms.GetEntityArray()[0]);
+	auto bounds = gcnew Bounds(scene.bounds);
+	rootEntity = gcnew Entity(scene.transforms.GetEntityArray()[0], bounds);
 
 	// Merge our loaded model with the global scene
 	auto& globalScene = wi::scene::GetScene();

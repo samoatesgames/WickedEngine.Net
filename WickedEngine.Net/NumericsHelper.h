@@ -16,6 +16,15 @@ namespace WickedEngineNet
 			);
 		}
 
+		static System::Numerics::Vector3^ XMFloatToVector3(XMFLOAT3 input)
+		{
+			return gcnew System::Numerics::Vector3(
+				input.x,
+				input.y,
+				input.z
+			);
+		}
+
 		static void Vector3ToXMFloat3(System::Numerics::Vector3^ input, XMFLOAT3& output)
 		{
 			output.x = input->X;
