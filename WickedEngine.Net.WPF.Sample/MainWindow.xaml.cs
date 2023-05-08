@@ -39,9 +39,9 @@ namespace WickedEngine.Net.WPF.Sample
             void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
             {
                 tick += 0.0025f;
-                var x = MathF.Sin(tick) * 20.0f;
-                var z = MathF.Cos(tick) * -20.0f;
-                camera.SetPositionAndLookAt(new Vector3(x, 6, z), new Vector3(0, 0, 0));
+                var x = MathF.Sin(tick) * 12.0f;
+                var z = MathF.Cos(tick) * -12.0f;
+                camera.SetPositionAndLookAt(new Vector3(x, 6, z), new Vector3(0, 4, 0));
 
                 var position = (Vector3)camera.GetPosition();
                 var lookAt = (Vector3)camera.GetForward();
