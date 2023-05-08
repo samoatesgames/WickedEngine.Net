@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Media;
 
 namespace WickedEngine.Net.WPF.Control
@@ -17,21 +16,8 @@ namespace WickedEngine.Net.WPF.Control
             WickedEngine.SetShaderPath("Shaders/");
         }
 
-        private void OwningWinder_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!m_rendering)
-            {
-                return;
-            }
-            Uninitialize();
-        }
-
         protected override void Initialize()
         {
-            var owningWinder = Window.GetWindow(this);
-            owningWinder.Closing -= OwningWinder_Closing;
-            owningWinder.Closing += OwningWinder_Closing;
-
             WickedEngine.SetWindow(Hwnd);
             WickedEngine.Run();
 
