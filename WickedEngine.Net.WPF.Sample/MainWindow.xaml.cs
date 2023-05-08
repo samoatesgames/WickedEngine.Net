@@ -14,6 +14,10 @@
             engine.SetInfoDisplay(WickedEngineNet.InfoDisplay.Watermark, true);
             engine.SetInfoDisplay(WickedEngineNet.InfoDisplay.FpsInfo, true);
             engine.SetInfoDisplay(WickedEngineNet.InfoDisplay.Resolution, true);
+
+            var renderPath = engine.GetRenderPath();
+            renderPath.SetHelperGridEnabled(true);
+            renderPath.SetSSREnabled(true);
         }
     }
 }

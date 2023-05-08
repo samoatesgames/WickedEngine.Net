@@ -6,6 +6,8 @@ WickedEngineNet::WickedEngineNet::WickedEngineNet()
 {
 	m_application = new wi::Application();
 	m_application->infoDisplay.watermark = false;
+
+	m_renderPath = gcnew RenderPath();
 }
 
 void WickedEngineNet::WickedEngineNet::SetShaderPath(String^ shaderPath)
@@ -18,10 +20,9 @@ void WickedEngineNet::WickedEngineNet::SetWindow(IntPtr windowHandle)
 	HWND hwnd = ((HWND)windowHandle.ToPointer());
 	m_application->SetWindow(hwnd);
 
-	if (m_renderPath == nullptr)
+	if (m_application->GetActivePath() == nullptr)
 	{
-		m_renderPath = new wi::RenderPath3D();
-		m_application->ActivatePath(m_renderPath);
+		m_application->ActivatePath(m_renderPath->Native());
 	}
 }
 

@@ -3,14 +3,16 @@
 using namespace System;
 
 #include <WickedEngine/WickedEngine.h>
+#include "RenderPath.h"
 #include "InfoDisplayEnum.h"
 
-namespace WickedEngineNet {
+namespace WickedEngineNet 
+{
 	public ref class WickedEngineNet
 	{
 	private:
 		wi::Application* m_application = { nullptr };
-		wi::RenderPath3D* m_renderPath = { nullptr };
+		RenderPath^ m_renderPath = { nullptr };
 
 	public:
 		WickedEngineNet();
@@ -26,5 +28,8 @@ namespace WickedEngineNet {
 
 		// Misc
 		void SetInfoDisplay(InfoDisplay flag, bool value);
+
+		// Getters
+		RenderPath^ GetRenderPath() { return m_renderPath; }
 	};
 }
