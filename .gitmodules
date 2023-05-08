@@ -1,0 +1,3 @@
+[submodule "external/WickedEngine"]
+	path = external/WickedEngine
+	url = https://github.com/samoatesgames/WickedEngine.git
