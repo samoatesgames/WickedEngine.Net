@@ -1,6 +1,7 @@
 #include "pch.h"
 
 #include "WickedEngine.Net.h"
+#include "utilities/ModelImporter.h"
 
 WickedEngineNet::WickedEngineNet::WickedEngineNet()
 {
@@ -73,6 +74,27 @@ void WickedEngineNet::WickedEngineNet::SetInfoDisplay(InfoDisplay flag, bool val
 		m_application->infoDisplay.colorgrading_helper = value;
 		break;
 	}
+}
+
+bool WickedEngineNet::WickedEngineNet::TryLoadGLTF(String^ filePath, Entity^% rootEntity)
+{
+	if (!System::IO::File::Exists(filePath))
+	{
+		return false;
+	}
+
+	// Load our model into a new scene
+	wi::scene::Scene scene;
+	ImportModel_GLTF(msclr::interop::marshal_as<std::string>(filePath), scene);
+
+	// Grab the root entity
+	rootEntity = gcnew Entity(scene.transforms.GetEntityArray()[0]);
+
+	// Merge our loaded model with the global scene
+	auto& globalScene = wi::scene::GetScene();
+	globalScene.Merge(scene);
+
+	return true;
 }
 
 void WickedEngineNet::WickedEngineNet::Run()

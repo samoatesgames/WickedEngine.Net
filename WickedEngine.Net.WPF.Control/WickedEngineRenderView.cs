@@ -8,6 +8,8 @@ namespace WickedEngine.Net.WPF.Control
         private bool m_rendering;
         public WickedEngineNet.WickedEngineNet WickedEngine { get; private set; }
 
+        public event EventHandler? EngineInitialized;
+
         public WickedEngineRenderView()
         {
             WickedEngine = new WickedEngineNet.WickedEngineNet();
@@ -20,6 +22,8 @@ namespace WickedEngine.Net.WPF.Control
         {
             WickedEngine.SetWindow(Hwnd);
             WickedEngine.Run();
+
+            EngineInitialized?.Invoke(this, EventArgs.Empty);
 
             m_rendering = true;
             CompositionTarget.Rendering += OnCompositionTargetRendering;

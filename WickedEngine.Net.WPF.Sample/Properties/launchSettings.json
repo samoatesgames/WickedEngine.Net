@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WickedEngine.Net.WPF.Sample": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

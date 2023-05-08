@@ -19,7 +19,7 @@
             </Grid.ColumnDefinitions>
 
             <GroupBox Grid.Column="0" Header="WickedEngine" Margin="4">
-                <control:WickedEngineRenderView x:Name="RenderView" />
+                <control:WickedEngineRenderView x:Name="RenderView" EngineInitialized="RenderView_EngineInitialized" />
             </GroupBox>
 
             <GroupBox Grid.Column="1" Header="Info" Margin="4">

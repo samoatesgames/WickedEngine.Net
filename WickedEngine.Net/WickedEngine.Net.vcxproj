@@ -77,22 +77,30 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ComponentTransform.h" />
+    <ClInclude Include="Entity.h" />
     <ClInclude Include="InfoDisplayEnum.h" />
     <ClInclude Include="NumericsHelper.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RenderPath.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="utilities\json.hpp" />
+    <ClInclude Include="utilities\ModelImporter.h" />
+    <ClInclude Include="utilities\tiny_gltf.h" />
     <ClInclude Include="Weather.h" />
     <ClInclude Include="WickedEngine.Net.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ComponentTransform.cpp" />
+    <ClCompile Include="Entity.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="RenderPath.cpp" />
+    <ClCompile Include="utilities\ModelImporter_GLTF.cpp" />
     <ClCompile Include="Weather.cpp" />
     <ClCompile Include="WickedEngine.Net.cpp" />
   </ItemGroup>

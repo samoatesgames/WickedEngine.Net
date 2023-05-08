@@ -5,6 +5,7 @@ using namespace System;
 #include <WickedEngine/WickedEngine.h>
 
 #include "Camera.h"
+#include "Entity.h"
 #include "InfoDisplayEnum.h"
 #include "RenderPath.h"
 #include "Weather.h"
@@ -33,6 +34,7 @@ namespace WickedEngineNet
 
 		// Misc
 		void SetInfoDisplay(InfoDisplay flag, bool value);
+		bool TryLoadGLTF(String^ filePath, Entity^% rootEntity);
 
 		// Getters
 		RenderPath^ GetRenderPath() { return m_renderPath; }

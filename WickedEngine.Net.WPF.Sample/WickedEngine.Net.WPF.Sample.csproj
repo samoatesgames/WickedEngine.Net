@@ -23,6 +23,16 @@
     <ProjectReference Include="..\WickedEngine.Net\WickedEngine.Net.vcxproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Assets\DamagedHelmet.glb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy /E /I /R /Y /Q $(SolutionDir)external\WickedEngine\WickedEngine\shaders\ $(TargetDir)\shaders" />
   </Target>

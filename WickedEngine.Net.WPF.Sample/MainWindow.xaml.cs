@@ -35,13 +35,13 @@ namespace WickedEngine.Net.WPF.Sample
 
         private void SetupCameraOrbit(Camera camera)
         {
-            var tick = 0.0f;
+            var tick = -90.0f;
             void Timer_Elapsed(object? sender, System.Timers.ElapsedEventArgs e)
             {
                 tick += 0.0025f;
-                var x = MathF.Cos(tick) * 10.0f;
-                var z = MathF.Sin(tick) * 10.0f;
-                camera.SetPositionAndLookAt(new Vector3(x, 4, z), Vector3.Zero);
+                var x = MathF.Sin(tick) * 20.0f;
+                var z = MathF.Cos(tick) * -20.0f;
+                camera.SetPositionAndLookAt(new Vector3(x, 6, z), new Vector3(0, 0, 0));
 
                 var position = (Vector3)camera.GetPosition();
                 var lookAt = (Vector3)camera.GetForward();
@@ -55,6 +55,22 @@ namespace WickedEngine.Net.WPF.Sample
             var timer = new System.Timers.Timer(20);
             timer.Elapsed += Timer_Elapsed;
             timer.Start();
+        }
+
+        private void RenderView_EngineInitialized(object sender, EventArgs e)
+        {
+            var engine = RenderView.WickedEngine;
+
+            Entity? entity = default;
+            if (!engine.TryLoadGLTF("Assets/DamagedHelmet.glb", ref entity))
+            {
+                throw new Exception("Failed to load GLTF model");
+            }
+
+            // TODO: use the bounds to calculate optimal scale and translation
+            var transform = entity.GetTransform();
+            transform.SetTranslation(new Vector3(0, 4, 0));
+            transform.SetScale(new Vector3(4, 4, 4));
         }
     }
 }
