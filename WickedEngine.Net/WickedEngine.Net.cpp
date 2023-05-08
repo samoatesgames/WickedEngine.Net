@@ -8,6 +8,8 @@ WickedEngineNet::WickedEngineNet::WickedEngineNet()
 	m_application->infoDisplay.watermark = false;
 
 	m_renderPath = gcnew RenderPath();
+
+	m_camera = gcnew Camera(wi::scene::GetCamera());
 }
 
 void WickedEngineNet::WickedEngineNet::SetShaderPath(String^ shaderPath)

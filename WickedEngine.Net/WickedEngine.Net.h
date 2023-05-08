@@ -3,8 +3,10 @@
 using namespace System;
 
 #include <WickedEngine/WickedEngine.h>
-#include "RenderPath.h"
+
+#include "Camera.h"
 #include "InfoDisplayEnum.h"
+#include "RenderPath.h"
 
 namespace WickedEngineNet 
 {
@@ -13,6 +15,7 @@ namespace WickedEngineNet
 	private:
 		wi::Application* m_application = { nullptr };
 		RenderPath^ m_renderPath = { nullptr };
+		Camera^ m_camera = { nullptr };
 
 	public:
 		WickedEngineNet();
@@ -31,5 +34,6 @@ namespace WickedEngineNet
 
 		// Getters
 		RenderPath^ GetRenderPath() { return m_renderPath; }
+		Camera^ GetCamera() { return m_camera; }
 	};
 }
