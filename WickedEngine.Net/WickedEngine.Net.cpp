@@ -9,7 +9,9 @@ WickedEngineNet::WickedEngineNet::WickedEngineNet()
 
 	m_renderPath = gcnew RenderPath();
 
+	auto& globalScene = wi::scene::GetScene();
 	m_camera = gcnew Camera(wi::scene::GetCamera());
+	m_weather = gcnew Weather(globalScene.weather);
 }
 
 void WickedEngineNet::WickedEngineNet::SetShaderPath(String^ shaderPath)

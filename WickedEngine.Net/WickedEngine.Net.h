@@ -7,6 +7,7 @@ using namespace System;
 #include "Camera.h"
 #include "InfoDisplayEnum.h"
 #include "RenderPath.h"
+#include "Weather.h"
 
 namespace WickedEngineNet 
 {
@@ -16,6 +17,7 @@ namespace WickedEngineNet
 		wi::Application* m_application = { nullptr };
 		RenderPath^ m_renderPath = { nullptr };
 		Camera^ m_camera = { nullptr };
+		Weather^ m_weather = { nullptr };
 
 	public:
 		WickedEngineNet();
@@ -35,5 +37,6 @@ namespace WickedEngineNet
 		// Getters
 		RenderPath^ GetRenderPath() { return m_renderPath; }
 		Camera^ GetCamera() { return m_camera; }
+		Weather^ GetWeather() { return m_weather; }
 	};
 }

@@ -24,6 +24,11 @@ namespace WickedEngine.Net.WPF.Sample
             renderPath.SetHelperGridEnabled(true);
             renderPath.SetSSREnabled(true);
 
+            var weather = engine.GetWeather();
+            weather.SetHorizon(new Vector3(0.38f, 0.38f, 0.38f));
+            weather.SetZenith(new Vector3(0.42f, 0.42f, 0.42f));
+            weather.SetAmbient(new Vector3(0.4f, 0.4f, 0.4f));
+
             var camera = engine.GetCamera();
             SetupCameraOrbit(camera);
         }

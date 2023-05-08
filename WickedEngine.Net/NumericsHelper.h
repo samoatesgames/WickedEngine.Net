@@ -15,5 +15,12 @@ namespace WickedEngineNet
 				XMVectorGetZ(input)
 			);
 		}
+
+		static void Vector3ToXMFloat3(System::Numerics::Vector3^ input, XMFLOAT3& output)
+		{
+			output.x = input->X;
+			output.y = input->Y;
+			output.z = input->Z;
+		}
 	};
 }
