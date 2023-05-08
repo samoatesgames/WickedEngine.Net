@@ -12,9 +12,20 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Row="0" Header="WickedEngine" Margin="4">
-            <control:WickedEngineRenderView x:Name="RenderView" />
-        </GroupBox>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="220" />
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Grid.Column="0" Header="WickedEngine" Margin="4">
+                <control:WickedEngineRenderView x:Name="RenderView" />
+            </GroupBox>
+
+            <GroupBox Grid.Column="1" Header="Info" Margin="4">
+                <TextBlock x:Name="InfoTextBlock" />
+            </GroupBox>
+        </Grid>
         
         <GroupBox Grid.Row="1" Header="About" Margin="4">
             <TextBlock TextAlignment="Center">

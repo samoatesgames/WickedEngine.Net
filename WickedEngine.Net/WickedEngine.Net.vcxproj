@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="InfoDisplayEnum.h" />
+    <ClInclude Include="NumericsHelper.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RenderPath.h" />
     <ClInclude Include="Resource.h" />
