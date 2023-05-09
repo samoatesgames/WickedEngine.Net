@@ -4,6 +4,7 @@
 
 #include "Bounds.h"
 #include "ComponentTransform.h"
+#include "ComponentLight.h"
 
 namespace WickedEngineNet
 {
@@ -19,6 +20,7 @@ namespace WickedEngineNet
 		~Entity();
 
 		ComponentTransform^ GetTransform();
+		ComponentLight^ GetLight();
 		Bounds^ GetBounds();
 	};
 }

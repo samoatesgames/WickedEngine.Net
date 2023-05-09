@@ -30,6 +30,13 @@ WickedEngineNet::ComponentTransform^ WickedEngineNet::Entity::GetTransform()
 	return gcnew ComponentTransform(*transform);
 }
 
+WickedEngineNet::ComponentLight^ WickedEngineNet::Entity::GetLight()
+{
+	auto& globalScene = wi::scene::GetScene();
+	auto* light = globalScene.lights.GetComponent(m_entityId);
+	return gcnew ComponentLight(*light);
+}
+
 WickedEngineNet::Bounds^ WickedEngineNet::Entity::GetBounds()
 {
 	return m_bounds;

@@ -98,9 +98,22 @@ bool WickedEngineNet::WickedEngineNet::TryLoadGLTF(String^ filePath, Entity^% ro
 	return true;
 }
 
-void WickedEngineNet::WickedEngineNet::DestroyEntity(Entity^ entity)
+WickedEngineNet::Entity^ WickedEngineNet::WickedEngineNet::CreateLight()
+{
+	auto& globalScene = wi::scene::GetScene();
+	auto name = "light_" + globalScene.lights.GetCount();
+
+	auto entity = globalScene.Entity_CreateLight(
+		msclr::interop::marshal_as<std::string>(name)
+	);
+
+	return gcnew Entity(entity);
+}
+
+void WickedEngineNet::WickedEngineNet::DestroyEntity(Entity^% entity)
 {
 	delete entity;
+	entity = nullptr;
 }
 
 void WickedEngineNet::WickedEngineNet::Run()

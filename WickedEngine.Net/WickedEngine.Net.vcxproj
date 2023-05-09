@@ -78,6 +78,7 @@
   <ItemGroup>
     <ClInclude Include="Bounds.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ComponentLight.h" />
     <ClInclude Include="ComponentTransform.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="InfoDisplayEnum.h" />
@@ -95,6 +96,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Bounds.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ComponentLight.cpp" />
     <ClCompile Include="ComponentTransform.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="pch.cpp">

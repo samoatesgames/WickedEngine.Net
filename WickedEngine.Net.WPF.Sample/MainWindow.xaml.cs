@@ -67,6 +67,10 @@ namespace WickedEngine.Net.WPF.Sample
         private void RenderView_EngineInitialized(object sender, EventArgs e)
         {
             var engine = RenderView.WickedEngine;
+
+            var skyLightEntity = engine.CreateLight();
+            var light = skyLightEntity.GetLight();
+
             LoadModel(engine);
         }
 
@@ -85,13 +89,8 @@ namespace WickedEngine.Net.WPF.Sample
 
             var modelPath = (string)((ComboBoxItem)AssetComboBox.SelectedItem).Content;
 
-            if (m_entity != null)
-            {
-                engine.DestroyEntity(m_entity);
-                m_entity = null;
-            }
-
             Entity? entity = null;
+            engine.DestroyEntity(ref m_entity);
             if (!engine.TryLoadGLTF(modelPath, ref entity))
             {
                 throw new Exception("Failed to load GLTF model");
