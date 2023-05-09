@@ -19,4 +19,4 @@ This is currently extremly WIP.
 
 ## Screenshots
 
-![Damaged Helmet opened in the sample application as of the 8th of May, 2023](https://github.com/samoatesgames/WickedEngine.Net/raw/main/Media/08-05-2023_DamagedHelmetSample.png)
+![Flight Helmet opened in the sample application as of the 9th of May, 2023](https://github.com/samoatesgames/WickedEngine.Net/raw/main/Media/09-05-2023_FlightHelmetSample.png)
