@@ -10,8 +10,8 @@ namespace WickedEngineNet
 	public ref class Entity
 	{
 	private:
-		wi::ecs::Entity m_entityId;
-		Bounds^ m_bounds;
+		wi::ecs::Entity m_entityId { wi::ecs::INVALID_ENTITY };
+		Bounds^ m_bounds { nullptr };
 
 	public:
 		Entity(wi::ecs::Entity entityId);

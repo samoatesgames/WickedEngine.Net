@@ -22,9 +22,24 @@
                 <control:WickedEngineRenderView x:Name="RenderView" EngineInitialized="RenderView_EngineInitialized" />
             </GroupBox>
 
-            <GroupBox Grid.Column="1" Header="Info" Margin="4">
-                <TextBlock x:Name="InfoTextBlock" />
-            </GroupBox>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="Info" Margin="4">
+                    <TextBlock x:Name="InfoTextBlock" />
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Header="Asset" Margin="4">
+                    <ComboBox x:Name="AssetComboBox" SelectionChanged="AssetComboBox_SelectionChanged" SelectedIndex="0">
+                        <ComboBoxItem>Assets/Corset.glb</ComboBoxItem>
+                        <ComboBoxItem>Assets/DamagedHelmet.glb</ComboBoxItem>
+                        <ComboBoxItem>Assets/FlightHelmet.glb</ComboBoxItem>
+                    </ComboBox>
+                </GroupBox>
+            </Grid>
         </Grid>
         
         <GroupBox Grid.Row="1" Header="About" Margin="4">

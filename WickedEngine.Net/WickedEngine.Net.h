@@ -35,8 +35,10 @@ namespace WickedEngineNet
 		// Misc
 		void SetInfoDisplay(InfoDisplay flag, bool value);
 		bool TryLoadGLTF(String^ filePath, Entity^% rootEntity);
+		void DestroyEntity(Entity^ entity);
 
 		// Getters
+		bool IsInitialized() { return m_application != nullptr && m_application->GetActivePath() != nullptr; }
 		RenderPath^ GetRenderPath() { return m_renderPath; }
 		Camera^ GetCamera() { return m_camera; }
 		Weather^ GetWeather() { return m_weather; }

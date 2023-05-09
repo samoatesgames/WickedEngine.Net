@@ -98,6 +98,11 @@ bool WickedEngineNet::WickedEngineNet::TryLoadGLTF(String^ filePath, Entity^% ro
 	return true;
 }
 
+void WickedEngineNet::WickedEngineNet::DestroyEntity(Entity^ entity)
+{
+	delete entity;
+}
+
 void WickedEngineNet::WickedEngineNet::Run()
 {
 	m_application->Run();

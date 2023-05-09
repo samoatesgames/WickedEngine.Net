@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using System.Windows;
+using System.Windows.Controls;
 using WickedEngineNet;
 
 namespace WickedEngine.Net.WPF.Sample
@@ -10,6 +11,7 @@ namespace WickedEngine.Net.WPF.Sample
     /// </summary>
     public partial class MainWindow
     {
+        private Entity? m_entity = null;
         private Vector3 m_lookAt = Vector3.Zero;
         private float m_cameraYOffset = 6.0f;
         private float m_cameraDistance = 10.0f;
@@ -68,10 +70,29 @@ namespace WickedEngine.Net.WPF.Sample
             LoadModel(engine);
         }
 
+        private void AssetComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            var engine = RenderView.WickedEngine;
+            LoadModel(engine);
+        }
+
         private void LoadModel(WickedEngineNet.WickedEngineNet engine)
         {
+            if (!engine.IsInitialized())
+            {
+                return;
+            }
+
+            var modelPath = (string)((ComboBoxItem)AssetComboBox.SelectedItem).Content;
+
+            if (m_entity != null)
+            {
+                engine.DestroyEntity(m_entity);
+                m_entity = null;
+            }
+
             Entity? entity = null;
-            if (!engine.TryLoadGLTF("Assets/FlightHelmet.glb", ref entity))
+            if (!engine.TryLoadGLTF(modelPath, ref entity))
             {
                 throw new Exception("Failed to load GLTF model");
             }
@@ -93,6 +114,8 @@ namespace WickedEngine.Net.WPF.Sample
 
             m_cameraYOffset = m_lookAt.Y * 1.5f;
             m_cameraDistance = (bounds.GetRadius() * 1.75f) * scale;
+
+            m_entity = entity;
         }
     }
 }

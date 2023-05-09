@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WickedEngine.Net.WPF.Sample", "WickedEngine.Net.WPF.Sample\WickedEngine.Net.WPF.Sample.csproj", "{6D7889B4-A003-4423-A4A9-AA697ADAB440}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WickedEngine.Net.WPF.Sample", "WickedEngine.Net.WPF.Sample\WickedEngine.Net.WPF.Sample.csproj", "{6D7889B4-A003-4423-A4A9-AA697ADAB440}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - External", "0 - External", "{57F18CDB-7095-4589-9CB3-9DBAD13C851A}"
 EndProject
@@ -17,7 +17,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WickedEngine_SOURCE", "exte
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WickedEngine.Net", "WickedEngine.Net\WickedEngine.Net.vcxproj", "{1BE6AAAF-F9D4-42E1-9383-01AD68350B1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WickedEngine.Net.WPF.Control", "WickedEngine.Net.WPF.Control\WickedEngine.Net.WPF.Control.csproj", "{F18993C5-6033-4F0A-9016-1EB1B5DE5F22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WickedEngine.Net.WPF.Control", "WickedEngine.Net.WPF.Control\WickedEngine.Net.WPF.Control.csproj", "{F18993C5-6033-4F0A-9016-1EB1B5DE5F22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,5 +57,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		external\WickedEngine\WickedEngine\WickedEngine_SOURCE.vcxitems*{06163dcb-b183-4ed9-9c62-13ef1658e049}*SharedItemsImports = 4
+		external\WickedEngine\WickedEngine\WickedEngine_SOURCE.vcxitems*{45d41acc-2c3c-43d2-bc10-02aa73ffc7c7}*SharedItemsImports = 9
 	EndGlobalSection
 EndGlobal

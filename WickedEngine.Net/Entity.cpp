@@ -17,6 +17,10 @@ WickedEngineNet::Entity::~Entity()
 {
 	delete m_bounds;
 	m_bounds = nullptr;
+
+	auto& globalScene = wi::scene::GetScene();
+	globalScene.Entity_Remove(m_entityId, true);
+	m_entityId = wi::ecs::INVALID_ENTITY;
 }
 
 WickedEngineNet::ComponentTransform^ WickedEngineNet::Entity::GetTransform()
