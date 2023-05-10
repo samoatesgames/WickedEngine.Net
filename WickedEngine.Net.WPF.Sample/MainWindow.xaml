@@ -29,7 +29,22 @@
                 </Grid.RowDefinitions>
 
                 <GroupBox Grid.Row="0" Header="Info" Margin="4">
-                    <TextBlock x:Name="InfoTextBlock" />
+                    <StackPanel>
+                        <TextBlock x:Name="InfoTextBlock" />
+                        
+                        <Border Height="20" BorderThickness="0" />
+                        <CheckBox x:Name="LightShadows" Content="Enable Shadows" IsChecked="True" Checked="LightShadows_Checked" Unchecked="LightShadows_Checked" />
+                        
+                        <Border Height="20" BorderThickness="0" />
+                        <TextBlock Text="Intensity:" />
+                        <Slider x:Name="LightIntensity" Value="10" Minimum="0" Maximum="100" ValueChanged="LightIntensity_ValueChanged" />
+
+                        <Border Height="20" BorderThickness="0" />
+                        <TextBlock Text="RGB:" />
+                        <Slider x:Name="LightColorR" Value="1" Minimum="0" Maximum="1" ValueChanged="LightColor_ValueChanged" />
+                        <Slider x:Name="LightColorG" Value="1" Minimum="0" Maximum="1" ValueChanged="LightColor_ValueChanged" />
+                        <Slider x:Name="LightColorB" Value="1" Minimum="0" Maximum="1" ValueChanged="LightColor_ValueChanged" />
+                    </StackPanel>
                 </GroupBox>
 
                 <GroupBox Grid.Row="1" Header="Asset" Margin="4">

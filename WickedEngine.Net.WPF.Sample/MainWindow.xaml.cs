@@ -15,6 +15,7 @@ namespace WickedEngine.Net.WPF.Sample
         private Vector3 m_lookAt = Vector3.Zero;
         private float m_cameraYOffset = 6.0f;
         private float m_cameraDistance = 10.0f;
+        private Entity? m_skyLightEntity = null;
 
         public MainWindow()
         {
@@ -68,10 +69,19 @@ namespace WickedEngine.Net.WPF.Sample
         {
             var engine = RenderView.WickedEngine;
 
-            var skyLightEntity = engine.CreateLight();
-            var light = skyLightEntity.GetLight();
-
+            SetupSkyLight(engine);
             LoadModel(engine);
+        }
+
+        private void SetupSkyLight(WickedEngineNet.WickedEngineNet engine)
+        {
+            engine.DestroyEntity(ref m_skyLightEntity);
+
+            m_skyLightEntity = engine.CreateLight(LightType.Directional);
+            var light = m_skyLightEntity.GetLight();
+            light.SetIntensity((float)LightIntensity.Value);
+            light.SetCastShadow(LightShadows.IsChecked == true);
+            light.SetColor(new Vector3((float)LightColorR.Value, (float)LightColorG.Value, (float)LightColorB.Value));
         }
 
         private void AssetComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -115,6 +125,36 @@ namespace WickedEngine.Net.WPF.Sample
             m_cameraDistance = (bounds.GetRadius() * 1.75f) * scale;
 
             m_entity = entity;
+        }
+
+        private void LightShadows_Checked(object sender, RoutedEventArgs e)
+        {
+            var light = m_skyLightEntity?.GetLight();
+            if (light == null)
+            {
+                return;
+            }
+            light.SetCastShadow(LightShadows.IsChecked == true);
+        }
+
+        private void LightIntensity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var light = m_skyLightEntity?.GetLight();
+            if (light == null)
+            {
+                return;
+            }
+            light.SetIntensity((float)LightIntensity.Value);
+        }
+
+        private void LightColor_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            var light = m_skyLightEntity?.GetLight();
+            if (light == null)
+            {
+                return;
+            }
+            light.SetColor(new Vector3((float)LightColorR.Value, (float)LightColorG.Value, (float)LightColorB.Value));
         }
     }
 }

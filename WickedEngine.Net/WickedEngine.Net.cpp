@@ -98,7 +98,7 @@ bool WickedEngineNet::WickedEngineNet::TryLoadGLTF(String^ filePath, Entity^% ro
 	return true;
 }
 
-WickedEngineNet::Entity^ WickedEngineNet::WickedEngineNet::CreateLight()
+WickedEngineNet::Entity^ WickedEngineNet::WickedEngineNet::CreateLight(LightType lightType)
 {
 	auto& globalScene = wi::scene::GetScene();
 	auto name = "light_" + globalScene.lights.GetCount();
@@ -106,6 +106,10 @@ WickedEngineNet::Entity^ WickedEngineNet::WickedEngineNet::CreateLight()
 	auto entity = globalScene.Entity_CreateLight(
 		msclr::interop::marshal_as<std::string>(name)
 	);
+
+	auto& light = *globalScene.lights.GetComponent(entity);
+	auto wiLightType = (wi::scene::LightComponent::LightType)lightType;
+	light.SetType(wiLightType);
 
 	return gcnew Entity(entity);
 }

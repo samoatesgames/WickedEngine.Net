@@ -37,7 +37,7 @@ namespace WickedEngineNet
 
 		// Entities
 		bool TryLoadGLTF(String^ filePath, Entity^% rootEntity);
-		Entity^ CreateLight();
+		Entity^ CreateLight(LightType lightType);
 		void DestroyEntity(Entity^% entity);
 
 		// Getters
